@@ -8,7 +8,9 @@ import scala.Tuple2;
 public class WikipediaMapReduceByKey {
 
     public static void main(String[] args) {
-        SparkConf conf = new SparkConf().setAppName("wikipedia-mapreduce-by-key");
+        SparkConf conf = new SparkConf()
+                //.setMaster("local[16]")
+                .setAppName("wikipedia-mapreduce-by-key");
 
         JavaSparkContext sc = new JavaSparkContext(conf);
         sc.textFile("/Users/aseigneurin/dev/spark-sandbox/data/wikipedia-pagecounts/pagecounts-20141101-*")
@@ -17,5 +19,7 @@ public class WikipediaMapReduceByKey {
                 .reduceByKey((x, y) -> x + y)
                 .sortByKey()
                 .foreach(t -> System.out.println(t._1 + " -> " + t._2));
+        
+        sc.close();
     }
 }

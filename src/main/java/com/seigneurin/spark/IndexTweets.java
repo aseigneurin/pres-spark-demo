@@ -20,6 +20,7 @@ import com.seigneurin.spark.pojo.Tweet;
 public class IndexTweets {
 
     public static void main(String[] args) throws Exception {
+        
         // Twitter4J
         // IMPORTANT: ajuster vos clés d'API dans twitter4J.properties
         Configuration twitterConf = ConfigurationContext.getInstance();
