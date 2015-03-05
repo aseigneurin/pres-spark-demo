@@ -37,8 +37,7 @@ public class IndexTweets {
                 .setAppName("Tweets Android")
                 .setMaster("local[2]")
                 .set("spark.serializer", KryoSerializer.class.getName())
-                .set("es.nodes", "localhost:9200")
-                .set("es.index.auto.create", "true");
+                .set("es.nodes", "localhost:9200");
         JavaStreamingContext sc = new JavaStreamingContext(sparkConf, new Duration(5000));
 
         String[] filters = { "#Android" };
